@@ -30,8 +30,12 @@ async function run() {
 			.where("age")
 			.gt(35)
 			.lt(41)
-			.limit(2)
-			.select("age");
+			.populate("bestFriend")
+			.limit(1);
+		/*
+        user[0].bestFriend = "6493033f1745b16c816f7869";
+		await user[0].save();
+        */
 		console.log(user);
 	} catch (error) {
 		console.log(error.message);
