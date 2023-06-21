@@ -25,18 +25,14 @@ async function run() {
 		});
 		console.log(user);
         */
-		const user = await User.where("name")
-			.equals("Tensin")
-			.where("age")
-			.gt(35)
-			.lt(41)
-			.populate("bestFriend")
-			.limit(1);
+		// const user = await User.findByName("Tensin"); // static method
+		const user = await User.find().byName("Tensin");
 		/*
         user[0].bestFriend = "6493033f1745b16c816f7869";
 		await user[0].save();
         */
 		console.log(user);
+		// user.sayHi(); // methods
 	} catch (error) {
 		console.log(error.message);
 	}

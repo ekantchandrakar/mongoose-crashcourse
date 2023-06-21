@@ -39,4 +39,19 @@ const userSchema = new mongoose.Schema({
 	address: addressSchema,
 });
 
+// Available on every instances of our Model
+userSchema.methods.sayHi = function () {
+	console.log(`Hi, My name is ${this.name}`);
+};
+
+// static method --- Available on actual Model not the instances but on the overall model
+userSchema.statics.findByName = function (name) {
+	return this.find({ name: new RegExp(name, "i") });
+};
+
+// we can add things to query itself --- query level thing only work with User.find() or User.where() which return query
+userSchema.query.byName = function (name) {
+	return this.where({ name: new RegExp(name, "i") });
+};
+
 module.exports = mongoose.model("User", userSchema);
