@@ -14,8 +14,8 @@ mongoose
 async function run() {
 	try {
 		const user = await User.create({
-			name: "Shyam",
-			age: 39,
+			name: "Tensin",
+			age: 40,
 			email: "test@test.com",
 			hobbies: ["Bowling", "Weight Lifting"],
 			address: {
@@ -24,7 +24,7 @@ async function run() {
 		});
 		console.log(user);
 	} catch (error) {
-		console.log(error);
+		console.log(error.message);
 	}
 }
 
