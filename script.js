@@ -26,13 +26,15 @@ async function run() {
 		console.log(user);
         */
 		// const user = await User.findByName("Tensin"); // static method
-		const user = await User.find().byName("Tensin");
+		// const user = await User.find().byName("Tensin"); // query level method
+		const user = await User.findOne({ name: "Tensin" });
 		/*
         user[0].bestFriend = "6493033f1745b16c816f7869";
 		await user[0].save();
         */
 		console.log(user);
 		// user.sayHi(); // methods
+		console.log(user.namedEmail);
 	} catch (error) {
 		console.log(error.message);
 	}
