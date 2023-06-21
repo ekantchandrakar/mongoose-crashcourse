@@ -16,6 +16,7 @@ async function run() {
 		const user = await User.create({
 			name: "Shyam",
 			age: 39,
+			email: "test@test.com",
 			hobbies: ["Bowling", "Weight Lifting"],
 			address: {
 				street: "Main st",
