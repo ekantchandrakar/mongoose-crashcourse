@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("./User");
 const { log } = require("console");
-
+// 64930741095e63bc6feb6118
 mongoose
 	.connect("mongodb://127.0.0.1:27017/testDB")
 	.then(() => {
@@ -13,6 +13,7 @@ mongoose
 
 async function run() {
 	try {
+		/*
 		const user = await User.create({
 			name: "Tensin",
 			age: 40,
@@ -22,6 +23,15 @@ async function run() {
 				street: "Main st",
 			},
 		});
+		console.log(user);
+        */
+		const user = await User.where("name")
+			.equals("Tensin")
+			.where("age")
+			.gt(35)
+			.lt(41)
+			.limit(2)
+			.select("age");
 		console.log(user);
 	} catch (error) {
 		console.log(error.message);
