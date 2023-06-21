@@ -33,8 +33,9 @@ async function run() {
 		await user[0].save();
         */
 		console.log(user);
+		await user.save();
 		// user.sayHi(); // methods
-		console.log(user.namedEmail);
+		console.log(user.namedEmail); // virtual
 	} catch (error) {
 		console.log(error.message);
 	}

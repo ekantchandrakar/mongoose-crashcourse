@@ -59,4 +59,15 @@ userSchema.virtual("namedEmail").get(function () {
 	return `${this.name} ${this.email}`;
 });
 
+// Schema Middleware
+userSchema.pre("save", function (next) {
+	this.updatedAt = Date.now();
+	next();
+});
+
+userSchema.post("save", function (doc, next) {
+	doc.sayHi();
+	next();
+});
+
 module.exports = mongoose.model("User", userSchema);
