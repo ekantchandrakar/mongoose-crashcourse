@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const User = require("./User");
+const { log } = require("console");
 
 mongoose
 	.connect("mongodb://127.0.0.1:27017/testDB")
@@ -11,15 +12,19 @@ mongoose
 	});
 
 async function run() {
-	const user1 = await User.create({ name: "kate", age: 27 }); // create a new user and save
-	user1.name = "sally"; // to update user
-	await user1.save();
-
-	const user = new User({ name: "James", age: 26 }); // create a new user
-	await user.save();
-
-	console.log(user);
-	console.log(user1);
+	try {
+		const user = await User.create({
+			name: "Shyam",
+			age: 39,
+			hobbies: ["Bowling", "Weight Lifting"],
+			address: {
+				street: "Main st",
+			},
+		});
+		console.log(user);
+	} catch (error) {
+		console.log(error);
+	}
 }
 
 run();
